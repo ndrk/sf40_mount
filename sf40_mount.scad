@@ -1,4 +1,4 @@
-smoothness = 200;
+smoothness = 80;
 
 pcbDiameter = 60.0;
 pcbHeight = 21.0;
@@ -105,7 +105,7 @@ module lidarFlange() {
 		}
 		intersection() {
 			difference() {
-				// Leg 
+				// Leg
 				cylinder(d=bodyDiameter, h=legLength, $fn=smoothness);
 				cylinder(d=bodyDiameter-bodyThickness, h=legLength, $fn=smoothness);
 			}
@@ -131,7 +131,7 @@ module Triangle(
 	// Calculate Offsets for centering
 	offsetX = (center || (center==undef && centerXYZ[0]))?((cos(angle)*a)+b)/3:0;
 	offsetY = (center || (center==undef && centerXYZ[1]))?(sin(angle)*a)/3:0;
-	
+
 	pointAB1 = [-offsetX,-offsetY, centerZ-heightAB];
 	pointAB2 = [-offsetX,-offsetY, centerZ+heightAB];
 	pointBC1 = [b-offsetX,-offsetY, centerZ-heightBC];
@@ -142,7 +142,7 @@ module Triangle(
 	polyhedron(
 		points=[	pointAB1, pointBC1, pointCA1,
 					pointAB2, pointBC2, pointCA2 ],
-		faces=[	
+		faces=[
 			[0, 1, 2],
 			[3, 5, 4],
 			[0, 3, 1],
@@ -160,4 +160,3 @@ module Right_Angled_Triangle(
 	Triangle(a=a, b=b, angle=90, height=height, heights=heights,
 				center=center, centerXYZ=centerXYZ);
 }
-
